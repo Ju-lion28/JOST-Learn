@@ -1,16 +1,32 @@
+:root {
+    --text: #020b0d;
+    --background: #f2fbfd;
+    --primary: #22afe2;
+    --secondary: #f0908e;
+    --accent: #e9e14e;
+    }
+
 @font-face {
-    font-family: 'NotoSerif';
-    src: url('fonts/NotoSerif.ttf');
+    font-family: 'OpenSans';
+    src: url("fonts/OpenSans.ttf") format("truetype");
+    font-weight: 300 800;
+    font-stretch: 75 100;
+    font-style: normal;
 }
 @font-face {
-    font-family: 'NotoSerif';
-    src: url('fonts/NotoSerif-Italic.ttf');
+    font-family: 'OpenSans';
+    src: url('fonts/OpenSans-Italic.ttf') format("truetype");
+    font-weight: 300 800;
+    font-stretch: 75 100;
+    font-style: italic;
 }
 
 html {
     height: 100%;
     width: 100%;
-    font-family: NotoSerif;
+    color: var(--text);
+    background: var(--background);
+    font-family: OpenSans;
     font-size: 20px;
 }
 
@@ -22,13 +38,11 @@ body {
 }
 
 div.header {
-    background-color: #929292;
+    background-color: var(--secondary);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    /* border-bottom-left-radius: 25px; */
-    /* border-bottom-right-radius: 25px; */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
@@ -61,17 +75,50 @@ div.content {
     transition: margin-left .5s;
 }
 
-div.footer {
+h1 {
+    text-align: center;
+}
+
+h2 {
+    margin: 0.5em 0;
+    padding-left: 1em;
+    font-style: italic;
+}
+
+div.hero {
+    display: flex;
+    align-items: center;
+}
+
+#hero_text {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+#booking_button {
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: var(--accent);
+  }
+  
+
+footer.footer {
+    position: absolute;
     bottom: 0;
-    right: 0;
-    left: 0;
-    background-color: #929292;
-    padding: 16px;
-    /* border-top-left-radius: 25px;
-    border-top-right-radius: 25px; */
-    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2);
-    margin-top: auto;
-    display: grid;
-    justify-content: space-between;
     z-index: 99;
+    justify-content: space-between;
+    padding: 16px 32px;
+    width: calc(100vw - 64px);
+    height: 2.5rem;
+    background-color: var(--primary);
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2);
 }
