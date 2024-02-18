@@ -1,53 +1,58 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="Free educational services by students for students" />
+        <!--kys-->
+        <title>JOST Learning</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./style.css" />
+        <link rel="icon" type="image/x-icon" href="./assets/images/JOST Learn!.png" />
+    </head>
 
-<head>
-    <meta charset="utf-8"/>
-    <meta name="description" content="Free educational services by students for students"/>  <!--kys-->
-    <title>JOST Learning</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="./style.css"/>
-    <!-- <link rel="icon" type="image/x-icon" href="./assets/images/icons/logo/favicon.png"/> -->
-</head>
-
-<body>
-    <div class="header">
-        <a href="./index.html">
-            <img src="./assets/images/JOST Learn!.png" alt="logo" id="header_image">
-        </a>
-        <menu class="links">
-            <li><a href="./pages/resources.html">Resources</a></li>
-            <li><a href="./index.html">Apply</a></li>
-            <li><a>link1</a></li>
-            <li><a>link1</a></li>
-        </menu>
-    </div>
-
-    <div class="content">
-        <div class="hero">
-            <div class="hero" id="hero_text">
-                <h1>Welcome to JOST Learn!</h1>
-                <button id="booking_button">Get started!</button>
-            </div>
-            <div class="hero" id="hero_img">
-                <img src="https://fakeimg.pl/600x400?font=bebas">
-            </div>
+    <body>
+        <div class="header">
+            <a href="./index.html">
+                <img src="./assets/images/JOST Learn!.png" alt="logo" id="header_image" />
+            </a>
+            <menu class="links">
+                <li><a class="nav_link" href="./pages/resources.html">Resources</a></li>
+                <li><a class="nav_link" href="./index.html">Apply</a></li>
+                <li><a class="nav_link">link1</a></li>
+                <li><a class="nav_link">link1</a></li>
+            </menu>
         </div>
 
-        <h2>Who are we?</h2>
-        <p>We are a group of students </p>
-        <h2>Our Goal and Visions</h2>
-        <p>A free and accessible tutoring service for students grade 5 through 8 to ease in high school transition. Help students who struggle with learning in a traditional school environment and make learning a more fun experience. Giving more resources through educational videos and in person tutoring. Ensuring students stay on the right path.</p>
+        <article class="content">
+            <div class="hero">
+                <div class="hero" id="hero_text">
+                    <h1>Welcome to JOST Learn!</h1>
+                    <button id="booking_button" onclick="location.href='./pages/booking.html'" type="button">
+                        Get started!
+                    </button>
+                </div>
+                <div class="hero" id="hero_img">
+                    <img src="https://fakeimg.pl/600x400?font=bebas" />
+                </div>
+            </div>
 
-    </div>
-    <footer class="footer">
-        THIS IS THE FOOTER <br>
-        second line
-    </footer>
+            <h2>Who are we?</h2>
+            <p>
+                We are a group of students who recognize the challenges that come with transitioning to highschool
+            </p>
+            <h2>Our Goal and Visions</h2>
+            <p>
+                A free and accessible tutoring service for students grade 5 through 8 to ease in high school transition.
+                Help students who struggle with learning in a traditional school environment and make learning a more
+                fun experience. Giving more resources through educational videos and in person tutoring. Ensuring
+                students stay on the right path.
+            </p>
+        </article>
+        <div class="footer">
+            THIS IS THE FOOTER <br />
+            second line
+        </div>
 
-
-    <script src="./script.js"></script>
-</body>
-
-
+        <script src="./script.js"></script>
+    </body>
 </html>

@@ -4,20 +4,20 @@
     --primary: #22afe2;
     --secondary: #f0908e;
     --accent: #e9e14e;
-    }
+}
 
 @font-face {
-    font-family: 'OpenSans';
+    font-family: "OpenSans";
     src: url("/assets/font/OpenSans.ttf") format("truetype");
     font-weight: 300 800;
-    font-stretch: 75 100;
+    font-stretch: 75% 100%;
     font-style: normal;
 }
 @font-face {
-    font-family: 'OpenSans';
-    src: url('/assets/font/OpenSans-Italic.ttf') format("truetype");
+    font-family: "OpenSans";
+    src: url("/assets/font/OpenSans-Italic.ttf") format("truetype");
     font-weight: 300 800;
-    font-stretch: 75 100;
+    font-stretch: 75% 100%;
     font-style: italic;
 }
 
@@ -33,7 +33,7 @@ html {
 body {
     margin: 0; /* Remove default margin */
     display: grid;
-    flex-direction: column;
+    min-height: 100vh; /* Set the minimum height of the body to 100% of the viewport height */
     user-select: none;
 }
 
@@ -43,6 +43,7 @@ div.header {
     top: 0;
     left: 0;
     right: 0;
+    padding-left: 1em;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
@@ -61,15 +62,26 @@ menu.links {
     font-size: 1.2em;
 }
 
-div.content {
+a,
+a:visited {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 650;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+article.content {
     display: grid;
     justify-items: stretch;
     margin: auto;
     min-width: 100px;
     max-width: 100vh;
     text-align: left;
-    padding: 65px 32px;
-    transition: margin-left .5s;
+    padding: 100px 32px 2.5rem;
 }
 
 h1 {
@@ -85,6 +97,7 @@ h2 {
 div.hero {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 #hero_text {
@@ -121,14 +134,13 @@ button:hover {
     border-radius: 15px;
 }
 
-footer.footer {
-    position: absolute;
-    bottom: 0;
-    z-index: 99;
-    justify-content: space-between;
-    padding: 16px 32px;
-    width: calc(100vw - 64px);
-    height: 2.5rem;
+div.footer {
     background-color: var(--primary);
+    color: var(--text);
+    padding: 0.5em 1em;
     box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: auto; /* Push the footer to the bottom of the container */
+    display: flex;
+    justify-content: space-between;
+    z-index: 99;
 }
