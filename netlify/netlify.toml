@@ -1,2 +1,3 @@
 [[plugins]]
   package = "@netlify/plugin-emails"
+  package = "netlify-plugin-bundle-env"

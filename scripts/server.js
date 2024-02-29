@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+const gmailPASS = process.env.gmailPASS
 
 const app = express();
 const port = 3000;
@@ -15,14 +16,14 @@ app.post('/process_request', (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'your@gmail.com',
-      pass: 'your_password'
+      user: 'jostlearn@gmail.com',
+      pass: gmailPASS
     }
   });
 
   const mailOptions = {
     from: email,
-    to: 'your@example.com',
+    to: 'jostlearn@example.com',
     subject: subject,
     text: `${name} (${email}) says: ${message}`
   };
