@@ -13,3 +13,6 @@
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     Content-Security-Policy = "frame-ancestors http://jostlearn.netlify.app"
+
+[[plugins]]
+  package = "netlify-plugin-bundle-env"
