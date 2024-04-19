@@ -1,0 +1,10 @@
+# robots.txt for jostlearn.netlify.app
+
+User-agent: *
+Disallow: /
+
+User-agent: Googlebot
+Disallow:
+
+User-agent: Bingbot
+Disallow:

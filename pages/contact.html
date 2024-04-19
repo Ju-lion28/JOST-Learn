@@ -38,7 +38,25 @@
                 
                 <input type="submit" value="Submit">
             </form>
-        </article>
+            
+            <script>
+                document.getElementById('requestForm').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    
+                    var name = document.getElementById('name').value;
+                    var email = document.getElementById('email').value;
+                    var subject = document.getElementById('subject').value;
+                    var message = document.getElementById('message').value;
+                    
+                    var mailtoLink = 'mailto:' + 'jostlearn@gmail.com' +
+                                    '&bcc=' + email +
+                                    '&subject=' + encodeURIComponent(subject) +
+                                    '&body=' + encodeURIComponent(message);
+                                    
+                    window.location.href = mailtoLink;
+                });
+            </script>
+                    </article>
 
 
         <div class="footer">
@@ -46,6 +64,5 @@
             second line
         </div>
 
-        <script src="../scripts/email.js"></script>
     </body>
 </html>
