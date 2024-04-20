@@ -12,7 +12,7 @@ const path = require("path");
 let jsFiles = [];
 let htmlFiles = [];
 let miscFiles = [];
-let cssFiles = [];
+let cssFiles = []; 
 let imagePaths = [];
 
 if (!process.cwd().toString().includes("serverScripts")) {
