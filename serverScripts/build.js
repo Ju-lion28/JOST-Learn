@@ -1,12 +1,19 @@
+const sharp = require("sharp");
+const minifyHtml = require("@minify-html/node");
+const fsExtra = require('fs-extra');
+const esbuild = require('esbuild');
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+
+const process = require('node:process');
 const fs = require('fs');
 const path = require("path");
-const minifyHtml = require("@minify-html/node");
-const esbuild = require('esbuild');
-const sharp = require("sharp");
-const { JSDOM } = require("jsdom");
-const fsExtra = require('fs-extra');
 
-const distDir = path.join(__dirname, "dist");
+let jsFiles = [];
+let htmlFiles = [];
+let miscFiles = [];
+let cssFiles = [];
+let imagePaths = [];
 
 if (!process.cwd().toString().includes("serverScripts")) {
   console.log("Please enter the serverScripts directory and run the code from there.");
@@ -17,52 +24,66 @@ clean();
 createEnv();
 
 try {
+  const contents = fs.readFileSync(path.join(__dirname, '.buildignore'), { encoding: 'utf8' });
+  const filesToIgnoreArray = String(contents).split(/\r?\n/);
+
   const files = fs.readdirSync("..", { withFileTypes: true });
+  const filteredFiles = files.filter(obj => !filesToIgnoreArray.includes(obj.name));
 
-  for (const file of files) {
-    const filePath = path.join(file.path, file.name);
-
-    if (file.isDirectory()) {
-      const dirFiles = fs.readdirSync(filePath, { recursive: true });
-      for (const dirFile of dirFiles) {
-        const subFilePath = path.join(filePath, dirFile);
-        if (dirFile.includes(".html")) htmlHandler(subFilePath);
-        else if (dirFile.includes(".css")) cssHandler(subFilePath);
-        else if (dirFile.includes(".js")) jsHandler(subFilePath);
-        else miscFiles.push(subFilePath);
-      }
-    } else {
-      if (file.name.includes(".html")) htmlHandler(filePath);
-      else if (file.name.includes(".css")) cssHandler(filePath);
-      else if (file.name.includes(".js")) jsHandler(filePath);
-      else miscFiles.push(filePath);
+  for (const file of filteredFiles) {
+    switch (true) {
+      case file.name.includes(".html"):
+        htmlFiles.push(path.join(file.path, file.name));
+        break;
+      case file.name.includes(".js"):
+        jsFiles.push(path.join(file.path, file.name));
+        break;
+      case file.name.includes(".css"):
+        cssFiles.push(path.join(file.path, file.name));
+        break;
+      case file.isDirectory():
+        const dirFiles = fs.readdirSync(path.join(file.path, file.name), { recursive: true });
+        for (const dirFile of dirFiles) {
+          const filePath = path.join(file.path, file.name, dirFile);
+          if (dirFile.includes("html")) {
+            htmlFiles.push(filePath);
+          } else {
+            miscFiles.push(filePath);
+          }
+        }
+        break;
+      default:
+        miscFiles.push(path.join(file.path, file.name));
+        break;
     }
   }
-  
-  (async () => {
-    await loadImagesAndConvert(htmlFiles, true);
-  })();
 
+  htmlHandler(htmlFiles);
+  cssHandler(cssFiles);
+  jsHandler(jsFiles);
+  imagePaths = loadImages(htmlFiles);
+  webpHandler(imagePaths)
+  console.log("Copied");
 } catch (err) {
   console.error(err.message);
 }
 
-async function clean() {
+function clean() {
   try {
-    await fsExtra.emptyDir(distDir);
+    fsExtra.emptyDirSync(path.join(__dirname, "dist"), { recursive: true });
     console.log("Cleaning successful");
   } catch (err) {
     console.error("Error during clean:", err);
   }
 }
 
-async function createEnv() {
+function createEnv() {
   try {
-    await fsExtra.ensureDir(distDir);
-    await fsExtra.ensureDir(path.join(distDir, "pages"));
-    await fsExtra.ensureDir(path.join(distDir, "assets"));
+    fsExtra.ensureDirSync(path.join(__dirname, "dist"));
+    fsExtra.ensureDirSync(path.join(__dirname, "dist", "pages"));
+    fsExtra.ensureDirSync(path.join(__dirname, "dist", "assets"));
     
-    await fsExtra.copy(path.join("..", "assets"), path.join(distDir, "assets"), { overwrite: true });
+    fsExtra.copySync(path.join("..", "assets"), path.join(__dirname, "dist", "assets"), { overwrite: true });
 
     console.log("Environment setup completed successfully.");
   } catch (err) {
@@ -70,81 +91,83 @@ async function createEnv() {
   }
 }
 
-function htmlHandler(filePath) {
-  try {
-    const htmlContent = fs.readFileSync(filePath, 'utf8');
-    const minifiedHtml = minifyHtml.minify(Buffer.from(htmlContent), { minify_css: true, minify_js: true });
-    const outputname = path.relative("..", filePath);
-    fs.writeFileSync(path.join(distDir, outputname), minifiedHtml, 'utf8');
-  } catch (err) {
-    console.error(err.message);
-  }
-}
-
-async function jsHandler(filePath) {
-  const outputname = path.relative("..", filePath);
-  try {
-    await esbuild.build({
-      entryPoints: [filePath],
-      bundle: false,
-      minify: true,
-      sourcemap: false,
-      outfile: path.join(distDir, outputname),
-    });
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-async function cssHandler(filePath) {
-  const outputname = path.relative("..", filePath);
-  try {
-    await esbuild.build({
-      entryPoints: [filePath],
-      bundle: false,
-      minify: true,
-      sourcemap: false,
-      outfile: path.join(distDir, outputname),
-      loader: { '.ttf': 'empty' },
-    });
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-async function loadImagesAndConvert(htmlFiles, removeOriginal) {
-  const imageSrcs = [];
-
+function htmlHandler(htmlFiles) {
   for (let file of htmlFiles) {
     try {
-      const input = fs.readFileSync(file, 'utf8');
-      const dom = new JSDOM(input.toString());
-      const images = Array.from(dom.window.document.querySelectorAll("img")).map(image => image.src);
-      imageSrcs.push(...images.filter(src => !/^https?:\/\//.test(src)));
+      const htmlContent = fs.readFileSync(file, 'utf8');
+      const minifiedHtml = minifyHtml.minify(Buffer.from(htmlContent), { minify_css: true, minify_js: true });
+      const outputname = file.replace(/\.\./g, '');
+      fs.writeFileSync(path.join(__dirname, "dist", outputname), minifiedHtml, 'utf8');
     } catch (err) {
       console.error(err.message);
     }
   }
-
-  await webpHandler(imageSrcs, removeOriginal);
 }
 
-async function webpHandler(imageSrcs, removeOriginal) {
+function jsHandler(jsFiles) {
+  for(let file of jsFiles) {
+    const outputname = file.replace(/\.\./g, '');
+    try {
+      esbuild.build({
+        entryPoints: [file],
+        bundle: false,
+        minify: true,
+        sourcemap: false,
+        outfile: path.join(__dirname, "dist", outputname),
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+}
+
+function cssHandler(cssFiles) {
+  for(let file of cssFiles) {
+    const outputname = file.replace(/\.\./g, '');
+    try {
+      esbuild.build({
+        entryPoints: [file],
+        bundle: false,
+        minify: true,
+        sourcemap: false,
+        outfile: path.join(__dirname, "dist", outputname),
+        loader: { '.ttf': 'empty' },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+}
+
+function loadImages(htmlFiles) {
+  const filteredImages = [];
+
+  for (let file of htmlFiles) {
+      try {
+          const input = fs.readFileSync(file, 'utf8');
+          const dom = new JSDOM(input.toString());
+          const images = Array.from(dom.window.document.querySelectorAll("img")).map(image => image.src);
+          filteredImages.push(...images.filter(src => !/^https?:\/\//.test(src)));
+      } catch (err) {
+          console.error(err.message);
+      }
+  }
+
+  return [...new Set(filteredImages)];
+}
+
+async function webpHandler(imageSrcs) {
+  console.log(imageSrcs)
   for (let image of imageSrcs) {
-    const inputPath = path.join(__dirname, '..', 'assets', image);
+    const inputPath = path.join(__dirname, '..', image);
     const outputname = image.replace(/\.\.|\.[^.]+$/g, '') + ".webp";
-    const outputPath = path.join(distDir, "assets", outputname);
+    const outputPath = path.join(__dirname, 'dist', 'assets', outputname);
 
     console.log(`Processing: ${inputPath} -> ${outputPath}`);
     try {
       await sharp(inputPath)
         .toFormat("webp", { quality: 40, effort: 0 })
         .toFile(outputPath, { force: true });
-
-      if (removeOriginal) {
-        await fsExtra.unlink(inputPath);
-        console.log(`Original file removed: ${inputPath}`);
-      }
     } catch (error) {
       console.log(`An error occurred during processing: ${error}`);
     }
