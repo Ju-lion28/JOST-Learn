@@ -18,7 +18,6 @@
                 <li><a class="nav_link" href="../pages/resources.html">Resources</a></li>
                 <li><a class="nav_link" href="../pages/booking.html">Book a tutor</a></li>
                 <li><a class="nav_link" href="../pages/apply.html">Apply</a></li>
-                <li><a class="nav_link" href="../pages/contact.html">Contact us</a></li>
             </menu>
         </div>
 
@@ -33,7 +32,7 @@
                 <label for="subject">Subject:</label>
                 <input type="text" id="subject" name="subject" required><br><br>
                 
-                <label for="message">Message:</label><br>
+                <label for="message">Message:</label>
                 <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
                 
                 <input type="submit" value="Submit">
@@ -48,20 +47,26 @@
                     var subject = document.getElementById('subject').value;
                     var message = document.getElementById('message').value;
                     
-                    var mailtoLink = 'mailto:' + 'jostlearn@gmail.com' +
-                                    '&bcc=' + email +
-                                    '&subject=' + encodeURIComponent(subject) +
-                                    '&body=' + encodeURIComponent(message);
-                                    
-                    window.location.href = mailtoLink;
+                    var mailtoLink = `mailto:jostlearn@gmail.com
+                                      ?cc=${email}
+                                      &subject=From: ${encodeURIComponent(name)} | ${encodeURIComponent(subject)}
+                                      &body=${encodeURIComponent(message)}`;
+                    
+                    window.open(mailtoLink, '_blank');
+                });
+
+                var textarea = document.getElementById('message');
+                textarea.addEventListener('input', function() {
+                    this.style.height = 'auto';
+                    this.style.height = (this.scrollHeight) + 'px'; 
                 });
             </script>
-                    </article>
+        </article>
 
 
         <div class="footer">
-            THIS IS THE FOOTER <br />
-            second line
+            <a href="../pages/contact.html">Contact us</a>
+            Copyright © 2024 JOST Learn!
         </div>
 
     </body>
