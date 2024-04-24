@@ -65,12 +65,13 @@ a:hover {
 }
 
 article.content {
+    justify-self: center;
     display: flex;
     flex-direction: column;
     justify-items: stretch;
     margin: auto;
-    min-width: 100px;
-    max-width: 75vw;
+    min-width: 600px;
+    max-width: 80vw;
     text-align: left;
     padding: 100px 32px 2.5rem;
 }
@@ -90,7 +91,7 @@ div.hero {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    row-gap: 1em;
+    gap: 1em;
 }
 
 @media screen and (min-width: 1272px) {
@@ -121,6 +122,18 @@ div.hero {
     height: 60px;
     width: 60px;
     padding: 0 10px;
+}
+
+div.resource-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+div.resource {
+    scale: 1.5;
+    padding: 16px;
 }
 
 button,
