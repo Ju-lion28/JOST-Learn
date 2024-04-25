@@ -1,4 +1,4 @@
-# robots.txt for jostlearn.netlify.app
+# robots.txt for jostlearn.org
 
 User-agent: *
 Disallow: /
