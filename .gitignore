@@ -1,7 +1,3 @@
 .vscode
 .cspell
 .DS_Store
-serverScripts
-node_modules/
-package-lock.json
-dist
