@@ -183,6 +183,27 @@ textarea {
     font-size: 16px;
 }
 
+.instructions {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.instructions p {
+    margin: 0;
+}
+
+fieldset {
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    padding: 10px 16px 16px;
+}
+
+fieldset label {
+    display: inline;
+    margin-right: 10px;
+}
+
+
 div.footer {
     background-color: var(--primary);
     color: var(--text);

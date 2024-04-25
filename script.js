@@ -5,11 +5,14 @@ document.getElementById('requestForm').addEventListener('submit', function(event
     var email = document.getElementById('email').value;
     var subject = document.getElementById('subject').value;
     var message = document.getElementById('message').value;
-    
-    var mailtoLink = `mailto:jostlearn@gmail.com
-                      ?cc=${email}
-                      &subject=From: ${encodeURIComponent(name)} | ${encodeURIComponent(subject)}
-                      &body=${encodeURIComponent(message)}`;
+
+    var selectedLanguage = document.querySelector('input[name="language"]:checked').value;
+
+    var mailtoLink = "mailto:jostlearn@gmail.com" +
+                      `?cc=${email}` +
+                      `&subject=From: ${encodeURIComponent(name)} | ${encodeURIComponent(subject)}` +
+                      ` (${encodeURIComponent(selectedLanguage)})` +
+                      `&body=${encodeURIComponent(message)}`;
     
     window.open(mailtoLink, '_blank');
 });
