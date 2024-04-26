@@ -6,8 +6,9 @@ document.getElementById('requestForm').addEventListener('submit', function(event
     var subject = document.getElementById('subject').value;
     var message = document.getElementById('message').value;
 
-    var selectedLanguage = document.querySelector('input[name="language"]:checked').value;
-
+    var selectedLanguageElement = document.querySelector('input[name="language"]:checked');
+    var selectedLanguage = selectedLanguageElement ? selectedLanguageElement.value : '';
+    
     var mailtoLink = "mailto:jostlearn@gmail.com" +
                       `?cc=${email}` +
                       `&subject=From: ${encodeURIComponent(name)} | ${encodeURIComponent(subject)}` +
