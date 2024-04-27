@@ -1,10 +1,22 @@
-:root {
+@media (prefers-color-scheme: light) {
+  :root {
     --text: #020b0d;
     --background: #f2fbfd;
     --primary: #22afe2;
     --secondary: #f0908e;
     --accent: #e9e14e;
+  }
 }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #f2fbfd;
+    --background: #020b0d;
+    --primary: #1daadd;
+    --secondary: #71100f;
+    --accent: #b1a916;
+  }
+}
+
 
 @font-face {
     font-family: Lexend;
