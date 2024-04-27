@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="Free educational services by students for students" />
+        <title>JOST Learning</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../style.css" />
+        <link rel="icon" type="image/x-icon" href="../assets/images/JOST Learn!.png" />
+    </head>
+
+    <body>
+        <div class="header">
+            <a href="../index.html">
+                <img src="../assets/images/JOST Learn!.png" alt="logo" id="header_image" />
+            </a>
+            <menu class="links">
+                <li><a class="nav_link" href="../pages/resources.html">Resources</a></li>
+                <li><a class="nav_link" href="../pages/booking.html">Book a tutor</a></li>
+                <li><a class="nav_link" href="../pages/apply.html">Apply</a></li>
+            </menu>
+        </div>
+
+        <article class="content">
+            <div class="hero" id="title">
+                <h1>FAQ</h1>
+            </div>
+
+            <div class="text">
+                <h2>Why be a tutor?</h2>
+                <p>
+                    Becoming a tutor can be very rewarding. Witnessing the success and achievement of 
+                    the children you mentor is deeply fulfilling, offering a profound sense of accomplishment. 
+                    Tutoring opens doors to new relationships and opportunities, 
+                    allowing you to forge valuable connections while making a positive impact.
+                </p>
+
+                <h2>Being a tutor has its advntages</h2>
+                <ul>
+                    <li>Create your own schedule</li>
+                    <li>Volunteer hours to put on your CV</li>
+                    <li>Gain valuable experience</li>
+                </ul>
+
+                <h3>Still have questions?</h3>
+                <p>
+                    Check our <a href="./faq.html">frequently asked questions</a>
+                </p>
+            </div>
+
+            <form id="requestForm" name="applicationForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                
+                <fieldset>
+                    <legend>Select the language you would be tutoring in</legend>
+
+                    <input type="radio" id="language1" name="language" value="english" checked/>
+                    <label for="language1">English</label>
+
+                    <input type="radio" id="language2" name="language" value="french" />
+                    <label for="language2">French</label>
+
+                    <input type="radio" id="language3" name="language" value="bilingual" />
+                    <label for="language3">Both</label>
+
+                </fieldset><br>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" cols="50" required></textarea>
+                <div class="instructions">
+                    <p>
+                        Please tell us about what subjects or topics you want to tutor/teach, 
+                        how far you're willing to travel, and the age group you'd be willing 
+                        to teach (from grade 5 to 8).
+                    </p>
+                </div><br><br>
+                
+                <input type="hidden" id="subject" name="subject" value="Tutor Volunteer">
+
+                <input type="submit" value="Submit">
+            </form>
+
+        </article>
+        <div class="footer">
+            <a href="../pages/contact.html">Contact us</a>
+            Copyright © 2024 JOST Learn!
+        </div>
+
+        <script src="../script.js"></script>
+    </body>
+</html>

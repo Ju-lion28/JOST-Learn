@@ -85,6 +85,11 @@ h1 {
     text-align: center;
 }
 
+div.hero#title {
+    font-size: xxx-large;
+    justify-content: center;
+}
+
 h2 {
     margin: 0.5em 0;
     padding-left: 1em;
