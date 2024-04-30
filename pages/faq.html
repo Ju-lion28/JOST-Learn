@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -6,7 +7,6 @@
     <title>JOST Learning</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="../faq.css" />
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
@@ -22,6 +22,7 @@
             <li><a class="nav_link" href="../pages/resources.html">Resources</a></li>
             <li><a class="nav_link" href="../pages/booking.html">Book a tutor</a></li>
             <li><a class="nav_link" href="../pages/apply.html">Apply</a></li>
+            <li><a class="nav_link" href="../pages/faq.html">FAQ</a></li>
         </menu>
     </div>
 
@@ -30,156 +31,74 @@
             <h1>FAQ</h1>
         </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-        <section class="faq-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 offset-md-3">
-
-                        <div class="faq-title text-center pb-3">
-                            <h2>FAQ</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-6 offset-md-3">
-                        <div class="faq" id="accordion">
-                            <div class="card">
-                                <div class="card-header" id="faqHeading-1">
-                                    <div class="mb-0">
-                                        <h5 class="faq-title" data-toggle="collapse" data-target="#faqCollapse-1"
-                                            data-aria-expanded="true" data-aria-controls="faqCollapse-1">
-                                            <span class="badge">1</span>What is Lorem Ipsum?
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div id="faqCollapse-1" class="collapse" aria-labelledby="faqHeading-1"
-                                    data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s, when an unknown printer took a galley of type and scrambled it to
-                                            make a type specimen book. </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="faqHeading-2">
-                                    <div class="mb-0">
-                                        <h5 class="faq-title" data-toggle="collapse" data-target="#faqCollapse-2"
-                                            data-aria-expanded="false" data-aria-controls="faqCollapse-2">
-                                            <span class="badge">2</span> Where does it come from?
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div id="faqCollapse-2" class="collapse" aria-labelledby="faqHeading-2"
-                                    data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has
-                                            roots in a piece of classical Latin literature from 45 BC, making it over
-                                            2000 years old.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="faqHeading-3">
-                                    <div class="mb-0">
-                                        <h5 class="faq-title" data-toggle="collapse" data-target="#faqCollapse-3"
-                                            data-aria-expanded="false" data-aria-controls="faqCollapse-3">
-                                            <span class="badge">3</span>Why do we use it?
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div id="faqCollapse-3" class="collapse" aria-labelledby="faqHeading-3"
-                                    data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p>It is a long established fact that a reader will be distracted by the
-                                            readable content of a page when looking at its layout. The point of using
-                                            Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-                                            opposed to using 'Content here, content here.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="faqHeading-4">
-                                    <div class="mb-0">
-                                        <h5 class="faq-title" data-toggle="collapse" data-target="#faqCollapse-4"
-                                            data-aria-expanded="false" data-aria-controls="faqCollapse-4">
-                                            <span class="badge">4</span> Where can I get some?
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div id="faqCollapse-4" class="collapse" aria-labelledby="faqHeading-4"
-                                    data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the
-                                            majority have suffered alteration in some form, by injected humour, or
-                                            randomised words which don't look even slightly believable.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="faqHeading-5">
-                                    <div class="mb-0">
-                                        <h5 class="faq-title" data-toggle="collapse" data-target="#faqCollapse-5"
-                                            data-aria-expanded="false" data-aria-controls="faqCollapse-5">
-                                            <span class="badge">5</span> What is Lorem Ipsum?
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div id="faqCollapse-5" class="collapse" aria-labelledby="faqHeading-5"
-                                    data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p> It has survived not only five centuries, but also the leap into electronic
-                                            typesetting, remaining essentially unchanged. It was popularised in the
-                                            1960s with the release of Letraset sheets containing</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="faqHeading-6">
-                                    <div class="mb-0">
-                                        <h5 class="faq-title" data-toggle="collapse" data-target="#faqCollapse-6"
-                                            data-aria-expanded="false" data-aria-controls="faqCollapse-6">
-                                            <span class="badge">6</span> Where does it come from?
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div id="faqCollapse-6" class="collapse" aria-labelledby="faqHeading-6"
-                                    data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below
-                                            for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum
-                                            et Malorum" by Cicero are also reproduced in their exact original form,
-                                            accompanied by English versions from the 1914 translation by H. Rackham.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="faqHeading-7">
-                                    <div class="mb-0">
-                                        <h5 class="faq-title" data-toggle="collapse" data-target="#faqCollapse-7"
-                                            data-aria-expanded="false" data-aria-controls="faqCollapse-7">
-                                            <span class="badge">7</span> Why do we use it?
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div id="faqCollapse-7" class="collapse" aria-labelledby="faqHeading-7"
-                                    data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as
-                                            their default model text, and a search for 'lorem ipsum' will uncover many
-                                            web sites still in their infancy. Various versions have evolved over the
-                                            years, sometimes by accident, sometimes on purpose (injected humour and the
-                                            like).</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="faq-container">
+            <div class="faq-question">
+                <div class="question-box">
+                    <h2 class="question">Is JostLearn really completely free?</h2>
+                    <div class="answer">
+                        <p>
+                            Yes, we are completely free for students. 
+                            Our goal is to make learning accessible for all 
+                            children and ensure everyone gets equal opportunities 
+                            to succeed in the classroom, regardless of financial situation.
+                        </p>
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="faq-question">
+                <div class="question-box">
+                    <h2 class="question">What subjects do tutors cover?</h2>
+                    <div class="answer">
+                        <p>
+                            Our tutors can provide students with a wide range of subjects including math, 
+                            science, history and more. Our tutors will also be able to help students with 
+                            the individual topics within these subjects
+                        <p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-question">
+                <div class="question-box">
+                    <h2 class="question">How are tutors selected and trained?</h2>
+                    <div class="answer">
+                        <p>
+                            Our tutors are student volunteers who are passionate and determined 
+                            to help students succeed academically and improve their relationship 
+                            with learning. We select our tutors by choosing those with high academic 
+                            success and making sure they are capable of providing students with 
+                            high-quality assistance.
+                        <p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-question">
+                <div class="question-box">
+                    <h2 class="question">Who can use JostLearn?</h2>
+                    <div class="answer">
+                        <p>
+                            Although anyone can get access to use JostLearn, 
+                            we specialize in subject levels grade 5-8. 
+                            Our resources are catered towards those grade levels as we also wish to 
+                            help students enter their high school years.
+                        <p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-question">
+                <div class="question-box">
+                    <h2 class="question">Still have questions?</h2>
+                    <div class="answer">
+                        <p>
+                            Contact us at 
+                            <span style="font-weight: 550;">jostlearn@gmail.com</span> 
+                            or click 
+                            <a href="./contact.html">here</a>!
+                        <p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </article>
     <div class="footer">
         <a href="../pages/contact.html">Contact us</a>

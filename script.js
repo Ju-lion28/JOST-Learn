@@ -22,6 +22,19 @@
 //     // themeIcon.src = `../assets/icons/theme/${newTheme}.svg`;
 // }
 
+document.addEventListener("DOMContentLoaded", function () {
+    const questions = document.querySelectorAll(".faq-question");
+
+    questions.forEach(function (question) {
+        const answer = question.querySelector(".answer");
+
+        question.addEventListener("click", function () {
+            answer.style.display = answer.style.display === "block" ? "none" : "block";
+        });
+    });
+});
+  
+
 document.getElementById('requestForm').addEventListener('submit', function(event) {
     event.preventDefault();
     

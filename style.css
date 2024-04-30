@@ -244,3 +244,27 @@ div.footer {
     justify-content: space-between;
     z-index: 99;
 }
+
+.faq-container {
+    width: 70vw;
+}
+
+.faq-question {
+    margin-bottom: 20px;
+}
+
+.question-box {
+    border: 2px solid var(--primary);
+    background-color: var(--accent);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.question {
+    cursor: pointer;
+}
+
+.answer {
+    display: none;
+    padding: 0 20px;
+}
