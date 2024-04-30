@@ -14,7 +14,7 @@
     <body>
         <div class="header">
             <a href="../index.html">
-                <img src="../assets/images/JOST Learn!.png" alt="logo" id="header_image" />
+                <img src="../assets/favicon/android-chrome-192x192.png" alt="logo" id="header_image" />
             </a>
             <menu class="links">
                 <li><a class="nav_link" href="../pages/resources.html">Resources</a></li>
@@ -57,10 +57,10 @@
 
             <form id="requestForm" name="applicationForm">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required><br><br>
+                <input type="text" id="name" name="name" autocomplete="name" required><br><br>
                 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br><br>
+                <input type="email" id="email" name="email" autocomplete="email" required><br><br>
                 
                 <fieldset>
                     <legend>Preferred language</legend>
@@ -77,9 +77,14 @@
                 <textarea id="message" name="message" rows="4" cols="50" required></textarea>
                 <div class="instructions">
                     <p>
-                        Please tell us about what subjects or topics you want to tutor/teach, 
-                        how far you're willing to travel, and the age group you'd be willing 
-                        to teach (from grade 5 to 8).
+                        <p style="padding-bottom: .5em;">
+                            Please tell us about what subjects or topics you need help with, 
+                            wether you would be willing to travel (if so how far), and
+                            your grade level/age group.
+                        </p>
+                        <span style="padding: .5em;"></span>
+                        <em>note that this service is 
+                            only available for grades 5 through 8</em>
                     </p>
                 </div><br><br>
                 
