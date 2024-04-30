@@ -27,7 +27,9 @@
         <article class="content">
             <div class="hero">
                 <div class="hero" id="hero_text">
-                    <h1>Start helping those in need today</h1>
+                    <h1>Start helping those<br>
+                        in need <span style="font-weight: 900;">today</span>
+                    </h1>
                     <button id="booking_button" onclick="location.href='#requestForm'" type="button">
                         Get started!
                     </button>
@@ -61,10 +63,10 @@
 
             <form id="requestForm" name="applicationForm">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required><br><br>
+                <input type="text" id="name" name="name" autocomplete="name" required><br><br>
                 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br><br>
+                <input type="email" id="email" name="email" autocomplete="email" required><br><br>
                 
                 <fieldset>
                     <legend>Select the language you would be tutoring in</legend>
