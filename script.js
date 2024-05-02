@@ -1,27 +1,3 @@
-// document.addEventListener("DOMContentLoaded", function () {
-
-//     let storedTheme = localStorage.getItem("theme") || "light";
-//     document.documentElement.setAttribute("data-theme", storedTheme);
-
-//     // let themeToggleButton = document.getElementById("themeToggleButton");
-//     // let themeIcon = document.getElementById("themeIcon");
-
-
-//     updateTheme(storedTheme);
-
-//     // themeToggleButton.addEventListener("click", () => {
-//     //     storedTheme = storedTheme === "light" ? "dark" : "light";
-//     //     updateTheme(storedTheme);
-//     // });
-// });
-
-// function updateTheme(newTheme) {
-//     localStorage.setItem("theme", newTheme);
-//     document.documentElement.setAttribute("data-theme", newTheme);
-
-//     // themeIcon.src = `../assets/icons/theme/${newTheme}.svg`;
-// }
-
 document.addEventListener("DOMContentLoaded", function () {
     const questions = document.querySelectorAll(".faq-question");
 
@@ -33,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-  
+
 
 document.getElementById('requestForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -41,6 +17,7 @@ document.getElementById('requestForm').addEventListener('submit', function(event
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var subject = document.getElementById('subject').value;
+    var address = document.getElementById('address').value;
     var message = document.getElementById('message').value;
 
     var selectedLanguageElement = document.querySelector('input[name="language"]:checked');
@@ -48,11 +25,11 @@ document.getElementById('requestForm').addEventListener('submit', function(event
     
     var mailtoLink = "mailto:jostlearn@gmail.com" +
                       `?cc=${email}` +
-                      `&subject=From: ${encodeURIComponent(name)} | ${encodeURIComponent(subject)}` +
-                      ` (${encodeURIComponent(selectedLanguage)})` +
-                      `&body=${encodeURIComponent(message)}`;
+                      `&subject=From: ${name} | ${subject}` +
+                      ` (${selectedLanguage})` +
+                      `&body=${address}\n\n${message}`;
     
-    window.open(mailtoLink, '_blank');
+    window.open(encodeURI(mailtoLink), '_blank');
 });
 
 var textarea = document.getElementById('message');
