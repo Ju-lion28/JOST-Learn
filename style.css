@@ -1,19 +1,10 @@
-:root/*[data-theme="light"]*/ {
+:root {
     --text: #020b0d;
     --background: #f2fbfd;
     --primary: #22afe2;
     --secondary: #f0908e;
     --accent: #e9e14e;
 }
-
-/* :root[data-theme="dark"] {
-    --text: #f2fbfd;
-    --background: #020b0d;
-    --primary: #1daadd;
-    --secondary: #71100f;
-    --accent: #b1a916;
-} */
-
 
 @font-face {
     font-family: Lexend;
@@ -98,7 +89,7 @@ h1 {
     line-height: 1.5em;
 }
 
-div.hero#title {
+#title {
     font-size: xxx-large;
     justify-content: center;
 }
@@ -158,16 +149,26 @@ ul {
     list-style-type: '→   ';
 }
 
+h2.resource-header {
+    padding-top: 24px;
+}
+
 div.resource-list {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 24px;
 }
 
-div.resource {
+div.resource-list#youtube {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 36px;
+}
+
+div.resource-list#youtube div.resource {
     scale: 1.4;
-    padding: 16px;
+    padding: 16px 24px;
 }
 
 button,
