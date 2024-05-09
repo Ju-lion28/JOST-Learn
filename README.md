@@ -5,4 +5,4 @@
 --> This is a (_working_) prototype
 
 > [!NOTE]
-> All images except for the JOST logo are not ours
+> All images except for the **JOST logo** are not ours
