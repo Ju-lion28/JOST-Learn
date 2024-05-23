@@ -13,6 +13,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: Lexend-Giga;
+    src: url("/assets/font/LexendGiga-VariableFont_wght.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+}
+
 html {
     height: 100%;
     width: 100%;
@@ -43,6 +50,7 @@ div.header {
 }
 
 menu.links {
+    font-family: Lexend-Giga;
     list-style-type: none;
     display: flex;
     flex-grow: 1;
@@ -90,6 +98,7 @@ h1 {
 }
 
 #title {
+    font-family: Lexend-Giga;
     font-size: xxx-large;
     justify-content: center;
 }
@@ -127,10 +136,15 @@ div.hero {
 }
 
 #hero_text {
+    font-family: Lexend-Giga;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
+}
+
+h1#home {
+    font-family: Lexend;
 }
 
 #hero_img img{
@@ -173,7 +187,7 @@ div.resource-list#youtube div.resource {
 
 button,
 input[type="submit"] {
-    font-family: inherit;
+    font-family: Lexend-Giga;
     border: none;
     color: rgb(0, 0, 0);
     padding: 15px 32px;
