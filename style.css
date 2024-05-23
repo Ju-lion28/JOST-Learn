@@ -274,3 +274,8 @@ div.footer {
     display: none;
     padding: 0 20px;
 }
+
+.sheet_link {
+    text-decoration: underline;
+    font-style: italic;
+}
